@@ -1,0 +1,12 @@
+.header {
+	padding-top: 20px;
+	padding-bottom: 20px;
+    text-align: center;
+}
+
+.button {
+	display: flex;
+	align-items: center;
+  	justify-content: center;
+  	margin-bottom: 20px;
+}
