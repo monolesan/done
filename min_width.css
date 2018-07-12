@@ -6,7 +6,7 @@
 		position: absolute;
 		height: auto;
 	}
-	
+
 	.header p {
 		padding-bottom: 5px;
 	}
@@ -25,6 +25,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		align-self: flex-start;
 		width: 400px;
 		height: 352px;
 
