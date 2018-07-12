@@ -10,7 +10,6 @@
 	.header p {
 		padding-bottom: 5px;
 	}
-
 	.main {
 		display: flex;
 		flex-direction: column;
@@ -43,16 +42,6 @@
 		overflow-x:hidden;
 	}
 
-	input {
-		font-size: 13px;
-
-		width: 350px;
-		border: 0;
-
-		margin: 8px 8px 5px 16px;
-		padding: 10px 0px 4px 4px;
-	}
-
 	.footer {
 		order: 5;
 		position: static;
@@ -71,14 +60,11 @@
 		text-align: center;
 	}
 
-
 	.logo {
 		order:3;
 	}
-	.logo img {
-		width: 350px;
-		height: 350px;
 
+	.logo img {
 		margin-bottom: 20px;
 		display: flex;
 		align-items: center;
