@@ -1,6 +1,5 @@
 input {
 	font-size: 12px;
-	color: black;
 
 	width: 280px;
 	margin: 8px 0px 8px 5px;
@@ -33,9 +32,6 @@ input {
 	width: 300px;
 }
 
-body {
-	overflow-x:hidden;
-}
 .button a {
 	width: 250px;
 	padding-top: 8px;
