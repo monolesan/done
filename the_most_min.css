@@ -9,14 +9,14 @@ input {
 
 .todo_list {
 	width: 340px;
-	max-height: 350px;
-
+	max-height: 340px;
+/*
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	align-self: flex-start;
+	align-self: flex-start;*/
 
 	padding-bottom: 10px;
 	padding-top: 10px;
@@ -28,5 +28,5 @@ input {
 }
 
 .header p {
-		padding-bottom: 5px;
+		padding-bottom: 10px;
 	}
