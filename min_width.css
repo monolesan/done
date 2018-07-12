@@ -82,9 +82,6 @@
 	}
 
 	.button a {
-		background-color: #C4C4C4;
-		color: #151515;
-
 		width: 338px;
 
 		text-decoration: none;
@@ -104,11 +101,6 @@
 		-o-user-select: none;
 		user-select: none;
 	}
-
-	.button a:hover {
-		background-color: #ABABAB;
-	}
-
 
 	.footer a {
 		font-size: 15px;
