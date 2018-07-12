@@ -1,0 +1,19 @@
+@media only screen and (max-height: 628px) {
+	.header {
+		padding-top: 10px;
+		padding-bottom: 20px;
+		text-align: center;
+	}
+
+	.header p {
+		padding-top: 8px;
+		margin: 0;
+	}
+
+	.button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 20px;
+	}
+}
