@@ -4,10 +4,8 @@
 	<title>Done?</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="done_light.css">
-	<link rel="stylesheet" media="screen and (max-width: 856px),(max-height: 549px)" href="done_light_small_x.css">
-	<link rel="stylesheet" media="screen and (max-height: 628px)" href="done_light_small_y.css">
-	<!-- <script src="done.js"></script> -->
+	<link rel="stylesheet" media="all" type="text/css" href="done_light.css" id="theme_css">
+	<script src="done.js"></script>
 
 	<!-- favi vi vi vi con -->
 	<link rel="shortcut icon" type="image/png" href="favicon.png"/>
@@ -18,21 +16,22 @@
 </head>
 <body>
 	<div class="header">
-		<p><i>A simple and fast TODO list for productivity-procrastination lovers and others. </i></p>
+		<p><b>A simple and fast TODO list for productivity and procrastination lovers and others. </b></p>
+		<p><i>Focus on your everyday goals and complete them all.</i></p>
 	</div>
 
 	<div class="main">
 		<div class="logo">
-			<img src="logo_white.png">
+			<img src="logo_white.png" id="logo">
 		</div>
 
-		<div class="todo_list">
+		<div class="todo_list" id="todo_list">
 			<input type="text" class="previous_input" value="Finish design of a homepage" placeholder="Finish design of a homepage">
 			<input type="text" class="previous_input" value="Try out the private beta" placeholder="Try out the private beta">
 			<input type="text" class="previous_input" value="Buy milk" placeholder="Buy milk">
 			<input type="text" class="previous_input" value="Feed my lovely cat =^-^=" placeholder="Feed my lovely cat =^-^=">
 			<input type="text" class="previous_input" value="Don’t procrastinate" placeholder="Don’t procrastinate">
-			<input type="text" class="previous_input" value="Change light theme to dark, writing “set dark theme”" placeholder="Change light theme to dark, writing “set dark theme”">
+			<input type="text" class="previous_input" value="Type “set dark theme” to change light theme to dark" placeholder="Type “set dark theme” to change light theme to dark">
 
 			<input type="text" class="last_input" placeholder="Focus only on what matter">
 		</div>

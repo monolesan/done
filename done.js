@@ -9,7 +9,13 @@ document.addEventListener("DOMContentLoaded", function(){
 //call methods when something is changing
 window.onchange = function() {
   commands();
-  save();
+}
+
+window.onload = function() {
+   var allInputs = document.querySelectorAll('input,[tabindex]:not([tabindex="-1"])');
+  var lastInput = allInputs[allInputs.length - 1];
+
+  lastInput.focus();
 }
 
 // window.onblur = function(){
@@ -17,56 +23,56 @@ window.onchange = function() {
 // }
 
 //save all inputs
-function save() {
-  var allInputs = document.querySelectorAll('input,[tabindex]:not([tabindex="-1"])');
-  var Inp = ["Finish design of a homepage", "Try out the private beta"];
+// function save() {
+//   var allInputs = document.querySelectorAll('input,[tabindex]:not([tabindex="-1"])');
+//   var Inp = ["Finish design of a homepage", "Try out the private beta"];
 
-  for (var i = 0, len = allInputs.length; i < len; i++){               
-    var val = allInputs[i].value;
-    if (val.trim().length != 0 ){
-      Inp.push(val);
-    }
-  }
+//   for (var i = 0, len = allInputs.length; i < len; i++){               
+//     var val = allInputs[i].value;
+//     if (val.trim().length != 0 ){
+//       Inp.push(val);
+//     }
+//   }
 
-  //set icon
-  if (Inp.length > 0){
-    chrome.browserAction.setIcon({path : "x_icon_16.png" });
-  } else {
-    chrome.browserAction.setIcon({path : "icon_16.png" });
-  }
+//   //set icon
+//   if (Inp.length > 0){
+//     chrome.browserAction.setIcon({path : "x_icon_16.png" });
+//   } else {
+//     chrome.browserAction.setIcon({path : "icon_16.png" });
+//   }
 
-  chrome.storage.sync.set({"keyy": Inp}, function(){console.log(Inp)});
-}
+//   chrome.storage.sync.set({"keyy": Inp}, function(){console.log(Inp)});
+// }
 
-//get all inputs
-window.onload = function() {
-  var container = document.getElementById("todo_list");
-  var firstInput = document.getElementsByClassName("last_input")[0];
-  try {
-    chrome.storage.sync.get({"keyy": []}, function(result) {
-      Inp = result.keyy;
-      console.log(result.keyy);
+// //get all inputs
+// window.onload = function() {
+//   var container = document.getElementById("todo_list");
+//   var firstInput = document.getElementsByClassName("last_input")[0];
+//   try {
+//     chrome.storage.sync.get({"keyy": []}, function(result) {
+//       Inp = result.keyy;
+//       console.log(result.keyy);
 
-    //set icon
-    if (Inp.length > 0){
-      chrome.browserAction.setIcon({path : "x_icon_16.png" });
-    } else {
-      chrome.browserAction.setIcon({path : "icon_16.png" });
-    }
+//     //set icon
+//     if (Inp.length > 0){
+//       chrome.browserAction.setIcon({path : "x_icon_16.png" });
+//     } else {
+//       chrome.browserAction.setIcon({path : "icon_16.png" });
+//     }
 
-    for (var i = 0, len = Inp.length; i < len; i++) {
-      var newInput = document.createElement("INPUT");
-      newInput.setAttribute("value", Inp[i]);
-      newInput.classList.add("previous_input");
-      newInput.addEventListener('keydown', clickKeyboard);
-      container.insertBefore(newInput, firstInput); 
-    } 
-    createIn();
-  });
-  } catch (e) {
-    console.error(e);
-  }
-} 
+//     for (var i = 0, len = Inp.length; i < len; i++) {
+//       var newInput = document.createElement("INPUT");
+//       newInput.setAttribute("value", Inp[i]);
+//       newInput.classList.add("previous_input");
+//       newInput.addEventListener('keydown', clickKeyboard);
+//       container.insertBefore(newInput, firstInput); 
+//     } 
+//     createIn();
+//   });
+//   } catch (e) {
+//     console.error(e);
+//   }
+// } 
 
 //create element when creating a new element
 function createIn() {
@@ -78,6 +84,7 @@ function createIn() {
   newInput.classList.add("last_input");
   newInput.setAttribute("value", "");
   newInput.addEventListener('keydown', clickKeyboard);
+
   container.appendChild(newInput);
   
   newInput.focus();
@@ -154,15 +161,13 @@ function deleteIn() {
   var allInputs = document.querySelectorAll('input,[tabindex]:not([tabindex="-1"])');
   var n =  Array.from(allInputs).indexOf(event.target);
   event.target.remove();
- 
    
   allInputs[n+1].focus();
   allInputs[n+1].setSelectionRange(99999,99999);
- save();
 }
 
 //give a new placeholder
-var sentences = ["you are amazing", "focus only on what matter", "c:", "Just do it", "Great things starts with a small thing"];
+var sentences = ["you are amazing", "Focus only on what matters", "c:", "Just do it", "Great things starts with a small thing"];
 function randomPlaceholder() {
   return sentences[Math.floor(Math.random() * sentences.length)];
 }
@@ -172,42 +177,16 @@ function deleteInListenerOfCommands() {
   var secondOfTheLastInput = allInputs[allInputs.length - 2];
   secondOfTheLastInput.remove();
 }
+
 function setDarkTheme(){
-  var theme = document.getElementById('theme').href;
-  theme = "dark_theme.css";
-  chrome.storage.sync.set({theme: theme}, function() {
-    console.log('Value is set to ' + theme);
-  });
-
+  document.getElementById('theme_css').href = 'done_dark.css';
+  document.getElementById('logo').src = 'logo_black.png';
 }
+
 function setLightTheme(){
-  var theme = document.getElementById('theme').href;
-  theme = "light_theme.css";
-  chrome.storage.sync.set({theme: theme}, function() {
-    console.log('Value is set to ' + theme);
-  });
-
+  document.getElementById('theme_css').href = 'done_light.css';
+  document.getElementById('logo').src = 'logo_white.png';
 }
-//onload theme
-function onloadTheme(){
-  try {
-    chrome.storage.sync.get(['theme'], function(result) {
-      if(result.theme != undefined){ 
-        console.log('Value currently is ' + result.theme);
-        var theme = document.createElement("link");
-        theme.setAttribute("rel", "stylesheet");
-        theme.setAttribute("type", "text/css");
-        theme.setAttribute("href", result.theme);
-        document.getElementsByTagName("head")[0].appendChild(theme);
-      }
-    });
-  }
-  catch (e) {
-    console.error(e);
-  }
-}
-
-//onloadTheme();
 
 function commands(){
   var dark = /set dark theme/i;
@@ -217,12 +196,13 @@ function commands(){
   if (lastInput.value.match(dark)){ 
     setDarkTheme();
     deleteInListenerOfCommands();
-    onloadTheme();
   }
 
   if (lastInput.value.match(light)){ 
     setLightTheme();
     deleteInListenerOfCommands();
-    onloadTheme();
   }
 }
+// document.getElementById('buttonID').onclick = function () { 
+    
+// };
