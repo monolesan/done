@@ -38,8 +38,17 @@
 		overflow-x:hidden;
 	}
 
-	.footer {
+	input {
+		font-size: 14px;
 
+		width: 350px;
+		border: 0;
+
+		margin: 8px 8px 5px 16px;
+		padding: 10px 0px 6px 4px;
+	}
+
+	.footer {
 		order: 5;
 		position: static;
 		margin-top: 10px;
@@ -62,8 +71,8 @@
 		order:3;
 	}
 	.logo img {
-		width: 400px;
-		height: 400px;
+		width: 350px;
+		height: 350px;
 
 		margin-bottom: 20px;
 		display: flex;
