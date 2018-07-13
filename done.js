@@ -18,62 +18,6 @@ window.onload = function() {
   lastInput.focus();
 }
 
-// window.onblur = function(){
-//   save();
-// }
-
-//save all inputs
-// function save() {
-//   var allInputs = document.querySelectorAll('input,[tabindex]:not([tabindex="-1"])');
-//   var Inp = ["Finish design of a homepage", "Try out the private beta"];
-
-//   for (var i = 0, len = allInputs.length; i < len; i++){               
-//     var val = allInputs[i].value;
-//     if (val.trim().length != 0 ){
-//       Inp.push(val);
-//     }
-//   }
-
-//   //set icon
-//   if (Inp.length > 0){
-//     chrome.browserAction.setIcon({path : "x_icon_16.png" });
-//   } else {
-//     chrome.browserAction.setIcon({path : "icon_16.png" });
-//   }
-
-//   chrome.storage.sync.set({"keyy": Inp}, function(){console.log(Inp)});
-// }
-
-// //get all inputs
-// window.onload = function() {
-//   var container = document.getElementById("todo_list");
-//   var firstInput = document.getElementsByClassName("last_input")[0];
-//   try {
-//     chrome.storage.sync.get({"keyy": []}, function(result) {
-//       Inp = result.keyy;
-//       console.log(result.keyy);
-
-//     //set icon
-//     if (Inp.length > 0){
-//       chrome.browserAction.setIcon({path : "x_icon_16.png" });
-//     } else {
-//       chrome.browserAction.setIcon({path : "icon_16.png" });
-//     }
-
-//     for (var i = 0, len = Inp.length; i < len; i++) {
-//       var newInput = document.createElement("INPUT");
-//       newInput.setAttribute("value", Inp[i]);
-//       newInput.classList.add("previous_input");
-//       newInput.addEventListener('keydown', clickKeyboard);
-//       container.insertBefore(newInput, firstInput); 
-//     } 
-//     createIn();
-//   });
-//   } catch (e) {
-//     console.error(e);
-//   }
-// } 
-
 //create element when creating a new element
 function createIn() {
   var container = document.getElementById("todo_list");
@@ -88,6 +32,8 @@ function createIn() {
   container.appendChild(newInput);
   
   newInput.focus();
+
+  container.scrollTo(0,document.body.scrollHeight);
 }
 
 //listen keyboard
@@ -181,11 +127,13 @@ function deleteInListenerOfCommands() {
 function setDarkTheme(){
   document.getElementById('theme_css').href = 'done_dark.css';
   document.getElementById('logo').src = 'logo_black.png';
+  document.getElementById('changed_input').value = 'Type “set light theme” to change dark theme to light';
 }
 
 function setLightTheme(){
   document.getElementById('theme_css').href = 'done_light.css';
   document.getElementById('logo').src = 'logo_white.png';
+   document.getElementById('changed_input').value = 'Type “set dark theme” to change light theme to dark';
 }
 
 function commands(){

@@ -20,6 +20,15 @@ body {
 	padding-top: 20px;
 	padding-bottom: 32px;
 	text-align: center;
+
+}
+
+.header img {
+	width: 30px;
+	height: 30px;
+	margin: 0;
+	padding-left: 2px;
+	padding-right: 2px;
 }
 
 .header p {
