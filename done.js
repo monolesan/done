@@ -43,7 +43,7 @@ function clickKeyboard() {
   var lastInput = allInputs[allInputs.length - 1];
   var textOfInput = lastInput.value;
   textOfInput.trim().replace(); 
-
+  var n =  Array.from(allInputs).indexOf(event.target);
   if (event.target.classList.contains("last_input") && event.key === "Enter" && textOfInput !== "" && textOfInput.trim().length !== 0){
     createIn();
     inputChangeClass();
@@ -53,12 +53,15 @@ function clickKeyboard() {
     event.target.blur();
   }
 
-  if ((event.key === "Delete" || (event.key === "Backspace" && event.metaKey)) && !event.target.classList.contains("last_input")){
+  if ((event.key === "Backspace" && event.metaKey) && !event.target.classList.contains("last_input")){
     deleteIn();
-    if (event.key === "Delete") {
+  }
+  
+  if (event.key === "Delete"  && !event.target.classList.contains("last_input")) {
+      deleteIn();
       allInputs[n+1].setSelectionRange(99999,99999);
     }
-  }
+    
 
   if ((event.key === "Delete" || (event.key === "Backspace" && event.metaKey)) && event.target.classList.contains("last_input")){
     event.target.blur();
@@ -69,7 +72,7 @@ function clickKeyboard() {
   }
 
   var b;
-  var n =  Array.from(allInputs).indexOf(event.target);
+  
   if (event.keyCode == 38) {
     if (n === 0) {
       b = allInputs.length - 1;
