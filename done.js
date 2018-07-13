@@ -55,6 +55,9 @@ function clickKeyboard() {
 
   if ((event.key === "Delete" || (event.key === "Backspace" && event.metaKey)) && !event.target.classList.contains("last_input")){
     deleteIn();
+    if (event.key === "Delete") {
+      allInputs[n+1].setSelectionRange(99999,99999);
+    }
   }
 
   if ((event.key === "Delete" || (event.key === "Backspace" && event.metaKey)) && event.target.classList.contains("last_input")){
