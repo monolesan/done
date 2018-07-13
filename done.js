@@ -109,7 +109,7 @@ function deleteIn() {
   event.target.remove();
    
   allInputs[n+1].focus();
-  allInputs[n+1].setSelectionRange(99999,99999);
+  // allInputs[n+1].setSelectionRange(99999,99999);
 }
 
 //give a new placeholder
