@@ -12,7 +12,8 @@ window.onchange = function() {
 }
 
 window.onload = function() {
-   var allInputs = document.querySelectorAll('input,[tabindex]:not([tabindex="-1"])');
+  console.log("Don't look, it's my console. :D   @monolesan (on Twitter)")
+  var allInputs = document.querySelectorAll('input,[tabindex]:not([tabindex="-1"])');
   var lastInput = allInputs[allInputs.length - 1];
 
   lastInput.focus();
@@ -53,13 +54,9 @@ function clickKeyboard() {
     event.target.blur();
   }
 
-  if ((event.key === "Backspace" && event.metaKey) && !event.target.classList.contains("last_input")){
-    deleteIn();
-  }
-  
-  if (event.key === "Delete"  && !event.target.classList.contains("last_input")) {
+  if ((event.key === "Delete" || (event.key === "Backspace" && event.metaKey))  && !event.target.classList.contains("last_input")) {
       deleteIn();
-      allInputs[n+1].setSelectionRange(99999,99999);
+      event.preventDefault();
     }
     
 
@@ -113,10 +110,8 @@ function deleteIn() {
   var allInputs = document.querySelectorAll('input,[tabindex]:not([tabindex="-1"])');
   var n =  Array.from(allInputs).indexOf(event.target);
   event.target.remove();
-   
   allInputs[n+1].focus();
-  // allInputs[n+1].setSelectionRange(99999,99999);
-}
+ }
 
 //give a new placeholder
 var sentences = ["you are amazing", "Focus only on what matters", "c:", "Just do it", "Great things starts with a small thing"];
